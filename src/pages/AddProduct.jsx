@@ -4,14 +4,13 @@ function AddProduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
-  const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault()
 
     const newProduct = {
-        name,price: Number(price),category,image,description
+        name,price: Number(price),category,description
     }
 
      fetch("http://localhost:6001/products", {
@@ -28,7 +27,6 @@ function AddProduct() {
         setName("");
         setPrice("");
         setCategory("");
-        setImage("");
         setDescription("");
       });
   
@@ -36,7 +34,7 @@ function AddProduct() {
   
   return (
     <div className="min-h-screen bg-gray-100 p-8">
-        <div className="mx-auto max-w-xl rounded-lg bg bg-white p-6 shadow-md">
+        <div className="mx-auto max-w-xl rounded-lg bg-white p-6 shadow-md">
        <h1 className="mb-6 text-3xl font-bold">Add Product</h1>
        
      <form onSubmit={handleSubmit} className="space-y-4">
@@ -46,8 +44,6 @@ function AddProduct() {
       <input type="number" placeholder="Price" value={price} onChange={(event) => setPrice(event.target.value)} className="w-full rounded border p-3" required />
 
       <input type="text" placeholder="Category" value={category} onChange={(event) => setCategory(event.target.value)} className="w-full rounded border p-3" required />
-
-      <input type="text"  placeholder="Image URL" value={image} onChange={(event) => setImage(event.target.value)} className="w-full rounded border p-3" required />
 
       <textarea placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)} className="w-full rounded border p-3" rows="4" required />
 

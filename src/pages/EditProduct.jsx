@@ -7,7 +7,6 @@ function EditProduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
-  const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
 
   useEffect(() => {
@@ -17,7 +16,6 @@ function EditProduct() {
         setName(product.name);
         setPrice(product.price);
         setCategory(product.category);
-        setImage(product.image);
         setDescription(product.description);
       });
   }, [id]);
@@ -29,7 +27,6 @@ function EditProduct() {
       name,
       price: Number(price),
       category,
-      image,
       description,
     };
 
@@ -75,15 +72,6 @@ function EditProduct() {
             value={category}
             onChange={(event) => setCategory(event.target.value)}
             placeholder="Category"
-            className="w-full rounded border p-3"
-            required
-          />
-
-          <input
-            type="text"
-            value={image}
-            onChange={(event) => setImage(event.target.value)}
-            placeholder="Image URL"
             className="w-full rounded border p-3"
             required
           />
